@@ -19,12 +19,6 @@ updateCountdown(); setInterval(updateCountdown,1000);
 const observer = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-const audio=document.getElementById('music'); const musicBtn=document.getElementById('musicBtn'); const musicLabel=document.getElementById('musicLabel');
-musicBtn.addEventListener('click',async()=>{
-  if(audio.paused){try{await audio.play();musicBtn.textContent='Ⅱ';musicLabel.textContent='Playing'}catch{musicLabel.textContent='Add MP3 to assets'}}
-  else{audio.pause();musicBtn.textContent='♪';musicLabel.textContent='Our song'}
-});
-
 document.getElementById('rsvpForm').addEventListener('submit',e=>{
   e.preventDefault();
   const data=new FormData(e.currentTarget);
